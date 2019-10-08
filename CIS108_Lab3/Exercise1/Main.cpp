@@ -116,9 +116,9 @@ int main()
 		<< "i.  M: Memory Clear\n"
 		<< "j.  I: Invert sign\n"
 		<< "k.  ^: Power function\n"
-		<< "l.  ENTER: Execute the requested function, and then display the calculator\'s current value\n"
-		<< "m.  Any number: Shift that number into the register for executing in the next function" << endl << ">";
-	do
+		<< "l.  ENTER: Execute the requested function, and then display the calculator\'s current value\n" << endl << ">";
+
+	while(cond)
 	{
 		char c = _getch();
 
@@ -131,7 +131,18 @@ int main()
 			num2 = "";
 			next = false;
 
-			cout << '>';
+			cout << "a.  X: Exit the program\n"
+				<< "b.  C: Clear the calculator\n"
+				<< "c.  +: Addition\n"
+				<< "d.  -: Subtraction\n"
+				<< "e.  *: Multiplication\n"
+				<< "f.  /: Division\n"
+				<< "g.  S: Memory Store\n"
+				<< "h.  R: Memory Recall\n"
+				<< "i.  M: Memory Clear\n"
+				<< "j.  I: Invert sign\n"
+				<< "k.  ^: Power function\n"
+				<< "l.  ENTER: Execute the requested function, and then display the calculator\'s current value\n" << endl << ">";
 		}
 		else if (c == '+')
 		{
@@ -210,6 +221,10 @@ int main()
 			{
 				toPower(num1, num2);
 			}
+			else if (f == "" && num1 != "")
+			{
+				setValue(stod(num1));
+			}
 
 			num1 = "";
 			num2 = "";
@@ -229,10 +244,10 @@ int main()
 				num1 += c;
 			}
 		}
-		else if (toupper(_getch()) == 'X')
+		else if (toupper(c) == 'X')
 		{
 			cond = false;
 		}
 
-	} while (cond);
+	}
 }
